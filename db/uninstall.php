@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -19,14 +18,14 @@
  * @see uninstall_plugin()
  *
  * @package    mod
- * @subpackage newmodule
- * @copyright  2011 Your Name <your@email.adress>
+ * @subpackage xkcd
+ * @copyright  2012 Paul Vaughan
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
  * Custom uninstallation procedure
  */
-function xmldb_newmodule_uninstall() {
+function xmldb_xkcd_uninstall() {
     return true;
 }
