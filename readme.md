@@ -30,16 +30,22 @@ Download the archive and extract the files, or [clone the repository from GitHub
 
     xkcd/
     |-- db
+    |   |-- access.php
+    |   |-- install.php
     |   |-- install.xml
-    |   `-- log.php
+    |   |-- log.php
+    |   `-- uninstall.php
     |-- index.php
     |-- lang
     |   `-- en
     |       `-- xkcd.php
     |-- lib.php
+    |-- locallib.php
+    |-- mod_form.php
     |-- pix
     |   `-- icon.gif
     |-- readme.md
+    |-- styles.css
     |-- version.php
     `-- view.php
 
@@ -77,11 +83,11 @@ Thanks to Randall for what is arguably one of the most thought-provoking and ill
 
 ## History
 
-**April 23rd, 2012**
+**April 30th, 2012**
 
 * Version 0.1 for Moodle 2.x
-* Build 2012042300
+* Build 2012043003
 
 Using XPath as it is warm and fluffy.
 
-Still in alpha at this time.
+Still in beta at this time.
