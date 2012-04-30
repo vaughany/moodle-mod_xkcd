@@ -45,6 +45,9 @@ defined('MOODLE_INTERNAL') || die();
 function xkcd_supports($feature) {
     switch($feature) {
         case FEATURE_MOD_INTRO:         return false;
+        case FEATURE_IDNUMBER:          return false;
+        case FEATURE_GROUPS:            return false;
+        case FEATURE_GROUPINGS:         return false;
         default:                        return null;
     }
 }
