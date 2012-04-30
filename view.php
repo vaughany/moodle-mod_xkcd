@@ -26,8 +26,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-/// (Replace xkcd with the name of your module and remove this line)
-
 require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
 require_once(dirname(__FILE__).'/lib.php');
 require_once(dirname(__FILE__).'/locallib.php');
@@ -39,7 +37,7 @@ if ($id) {
     $cm         = get_coursemodule_from_id('xkcd', $id, 0, false, MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $cm->course), '*', MUST_EXIST);
     $xkcd  = $DB->get_record('xkcd', array('id' => $cm->instance), '*', MUST_EXIST);
-} elseif ($n) {
+} else if ($n) {
     $xkcd  = $DB->get_record('xkcd', array('id' => $n), '*', MUST_EXIST);
     $course     = $DB->get_record('course', array('id' => $xkcd->course), '*', MUST_EXIST);
     $cm         = get_coursemodule_from_instance('xkcd', $xkcd->id, $course->id, false, MUST_EXIST);
@@ -52,21 +50,12 @@ $context = get_context_instance(CONTEXT_MODULE, $cm->id);
 
 add_to_log($course->id, 'xkcd', 'view', "view.php?id={$cm->id}", $xkcd->name, $cm->id);
 
-/// Print the page header
-
+// Print the page header
 $PAGE->set_url('/mod/xkcd/view.php', array('id' => $cm->id));
 $PAGE->set_title(format_string($xkcd->name));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($context);
 
-// other things you may want to set - remove if not needed
-//$PAGE->set_cacheable(false);
-//$PAGE->set_focuscontrol('some-html-id');
-//$PAGE->add_body_class('xkcd-'.$somevar);
-
-/**
- * Block stuff.
- */
 $details = xkcd_details();
 if (!$details) {
     die('Write better error handling code.');
