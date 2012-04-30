@@ -31,12 +31,9 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-/** example constant */
-//define('XKCD_ULTIMATE_ANSWER', 42);
-
-////////////////////////////////////////////////////////////////////////////////
-// Moodle core API                                                            //
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Moodle core API
+ */
 
 /**
  * Returns the information on whether the module supports a feature
@@ -69,8 +66,6 @@ function xkcd_add_instance(stdClass $xkcd, mod_xkcd_mod_form $mform = null) {
 
     $xkcd->timecreated = time();
 
-    # You may have to add extra stuff in here #
-
     return $DB->insert_record('xkcd', $xkcd);
 }
 
@@ -91,8 +86,6 @@ function xkcd_update_instance(stdClass $xkcd, mod_xkcd_mod_form $mform = null) {
     $xkcd->timemodified = time();
     $xkcd->id = $xkcd->instance;
 
-    # You may have to add extra stuff in here #
-
     return $DB->update_record('xkcd', $xkcd);
 }
 
@@ -112,8 +105,6 @@ function xkcd_delete_instance($id) {
     if (! $xkcd = $DB->get_record('xkcd', array('id' => $id))) {
         return false;
     }
-
-    # Delete any dependent records here #
 
     $DB->delete_records('xkcd', array('id' => $xkcd->id));
 
@@ -182,7 +173,6 @@ function xkcd_get_recent_mod_activity(&$activities, &$index, $timestart, $course
 
 /**
  * Prints single activity item prepared by {@see xkcd_get_recent_mod_activity()}
-
  * @return void
  */
 function xkcd_print_recent_mod_activity($activity, $courseid, $detail, $modnames, $viewfullnames) {
@@ -226,9 +216,9 @@ function xkcd_get_extra_capabilities() {
     return array();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Gradebook API                                                              //
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Gradebook API
+ */
 
 /**
  * Is a given scale used by the instance of xkcd?
@@ -244,7 +234,6 @@ function xkcd_get_extra_capabilities() {
 function xkcd_scale_used($xkcdid, $scaleid) {
     global $DB;
 
-    /** @example */
     if ($scaleid and $DB->record_exists('xkcd', array('id' => $xkcdid, 'grade' => -$scaleid))) {
         return true;
     } else {
@@ -263,7 +252,6 @@ function xkcd_scale_used($xkcdid, $scaleid) {
 function xkcd_scale_used_anywhere($scaleid) {
     global $DB;
 
-    /** @example */
     if ($scaleid and $DB->record_exists('xkcd', array('grade' => -$scaleid))) {
         return true;
     } else {
@@ -283,7 +271,6 @@ function xkcd_grade_item_update(stdClass $xkcd) {
     global $CFG;
     require_once($CFG->libdir.'/gradelib.php');
 
-    /** @example */
     $item = array();
     $item['itemname'] = clean_param($xkcd->name, PARAM_NOTAGS);
     $item['gradetype'] = GRADE_TYPE_VALUE;
@@ -306,15 +293,14 @@ function xkcd_update_grades(stdClass $xkcd, $userid = 0) {
     global $CFG, $DB;
     require_once($CFG->libdir.'/gradelib.php');
 
-    /** @example */
     $grades = array(); // populate array of grade objects indexed by userid
 
     grade_update('mod/xkcd', $xkcd->course, 'mod', 'xkcd', $xkcd->id, 0, $grades);
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// File API                                                                   //
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * File API
+ */
 
 /**
  * Returns the lists of all browsable file areas within the given module context
@@ -354,9 +340,9 @@ function xkcd_pluginfile($course, $cm, $context, $filearea, array $args, $forced
     send_file_not_found();
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Navigation API                                                             //
-////////////////////////////////////////////////////////////////////////////////
+/**
+ * Navigation API
+ */
 
 /**
  * Extends the global navigation tree by adding xkcd nodes if there is a relevant content

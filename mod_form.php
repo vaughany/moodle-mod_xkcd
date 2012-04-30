@@ -42,7 +42,6 @@ class mod_xkcd_mod_form extends moodleform_mod {
 
         $mform = $this->_form;
 
-        //-------------------------------------------------------------------------------
         // Adding the "general" fieldset, where all the common settings are showed
         $mform->addElement('header', 'general', get_string('general', 'form'));
 
@@ -57,23 +56,21 @@ class mod_xkcd_mod_form extends moodleform_mod {
         $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
         $mform->addHelpButton('name', 'namehelp', 'xkcd');
 
-        //$mform->addElement('static', 'label1', null, get_string('explanation', 'xkcd'));
+        // $mform->addElement('static', 'label1', null, get_string('explanation', 'xkcd'));
 
         // Adding the standard "intro" and "introformat" fields
-        //$this->add_intro_editor();
+        // $this->add_intro_editor();
 
-        //-------------------------------------------------------------------------------
         // Adding the rest of xkcd settings, spreeading all them into this fieldset
         // or adding more fieldsets ('header' elements) if needed for better logic
-        //$mform->addElement('static', 'label1', 'xkcdsetting1', 'Your xkcd fields go here. Replace me!');
+        // $mform->addElement('static', 'label1', 'xkcdsetting1', 'Your xkcd fields go here. Replace me!');
 
-        //$mform->addElement('header', 'xkcdfieldset', get_string('xkcdfieldset', 'xkcd'));
-        //$mform->addElement('static', 'label2', 'xkcdsetting2', 'Your xkcd fields go here. Replace me!');
+        // $mform->addElement('header', 'xkcdfieldset', get_string('xkcdfieldset', 'xkcd'));
+        // $mform->addElement('static', 'label2', 'xkcdsetting2', 'Your xkcd fields go here. Replace me!');
 
-        //-------------------------------------------------------------------------------
         // add standard elements, common to all modules
         $this->standard_coursemodule_elements();
-        //-------------------------------------------------------------------------------
+
         // add standard buttons, common to all modules
         $this->add_action_buttons();
     }
