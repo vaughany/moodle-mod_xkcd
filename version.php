@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Defines the version of newmodule
+ * Defines the version of xkcd
  *
  * This code fragment is called by moodle_needs_upgrading() and
  * /admin/index.php
@@ -28,7 +28,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$module->version    = 2012043002;       // The current module version (Date: YYYYMMDDXX)
+$module->version    = 2012043003;       // The current module version (Date: YYYYMMDDXX)
 $module->requires   = 2010112400;       // Requires this Moodle version
 $module->cron       = 0;                // Period for cron to check this module (secs)
 $module->component  = 'mod_xkcd';       // To check on upgrade, that module sits in correct place
