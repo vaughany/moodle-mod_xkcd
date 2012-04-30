@@ -382,38 +382,3 @@ function xkcd_extend_navigation(navigation_node $navref, stdclass $course, stdcl
  */
 function xkcd_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $xkcdnode=null) {
 }
-
-////////////////////////////////////////////////////////////////////////////////
-// Block-specific functions.                                                  //
-////////////////////////////////////////////////////////////////////////////////
-
-function xkcd_details() {
-
-    // Variables.
-    $result     = array();
-
-    // xkcd url.
-    $url = 'http://xkcd.com/';
-    // get the html page into a string.
-    $src = file_get_contents($url);
-
-    // DOM things.
-    $dom = new DOMDocument();
-    @$dom->loadHTML($src);
-    $xpath = new DOMXPath($dom);
-
-    // Get the image url.
-    $nodelist = $xpath->query("//body/div/div[@id='comic']/img/@src");
-    $result['imgurl'] = $nodelist->item(0)->nodeValue;
-
-    // Get the title attribute.
-    $nodelist = $xpath->query("//body/div/div[@id='comic']/img/@title");
-    $result['title'] = $nodelist->item(0)->nodeValue;
-
-    // Get the alt attribute.
-    $nodelist = $xpath->query("//body/div/div[@id='comic']/img/@alt");
-    $result['alt'] = $nodelist->item(0)->nodeValue;
-
-    // Go!
-    return $result;
-}
