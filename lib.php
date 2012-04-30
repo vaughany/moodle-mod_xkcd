@@ -64,7 +64,7 @@ function xkcd_supports($feature) {
 function xkcd_add_instance(stdClass $xkcd, mod_xkcd_mod_form $mform = null) {
     global $DB;
 
-    $xkcd->timecreated = time();
+    $xkcd->created = time();
 
     return $DB->insert_record('xkcd', $xkcd);
 }
@@ -83,7 +83,7 @@ function xkcd_add_instance(stdClass $xkcd, mod_xkcd_mod_form $mform = null) {
 function xkcd_update_instance(stdClass $xkcd, mod_xkcd_mod_form $mform = null) {
     global $DB;
 
-    $xkcd->timemodified = time();
+    $xkcd->modified = time();
     $xkcd->id = $xkcd->instance;
 
     return $DB->update_record('xkcd', $xkcd);
